@@ -1,4 +1,5 @@
 const myTable = document.getElementById("mainTable")
+let myColor = 'red'
 
 function makeRow(paramNum) {
     const newRow = document.createElement('tr');
@@ -15,8 +16,21 @@ rowButton.addEventListener('click', function(clickEvent) {
     makeRow(10);
 });
 
-myTable.addEventListener('click', function(clickEvent) {
+function colorize (clickEvent) {
     if (clickEvent.target.matches('td')) {
-        clickEvent.target.classList.toggle('red')
-    }
+        console.log(clickEvent.target.classList)
+        if (!clickEvent.target.classList.length) {
+            console.log(select)
+            clickEvent.target.classList.toggle(myColor)
+        }
+    } 
+
+}
+
+myTable.addEventListener('click', colorize)
+
+const select = document.getElementsByTagName('select')[0]
+select.addEventListener('change', function(event) {
+    console.log(event.target.value)
+    myColor = event.target.value
 })
